@@ -1,100 +1,113 @@
-# Roadmap
+# AI System Design, from the Whiteboard
 
-Writing types in this programme:
+**Programme theme:** Architecting resilient, scalable, and cost-aware enterprise AI systems without falling for demo-ware traps.
 
-1. Curtain raiser: write-up 1 of each series. Sets the scene, shows what the demo hides.
-2. Middle write-up: one design decision per write-up, defended like a design review.
-3. Finale: the full system checklist for the series, plus honest lessons.
-4. Course companion: the longer lesson behind each write-up. Not for LinkedIn.
+**Profile:** System design. *Design it like you would defend it in a design review.*
 
-## 1. AI System Design, from the whiteboard
+**Author:** .NET/AI Architect, 17+ years building enterprise microservices, vector search pipelines and multi-agent workflows.
 
-Architecting resilient, scalable, and cost-aware enterprise AI systems without falling for demo-ware traps.
+**Who it is for:** Engineers learning AI system design, and business leaders who sign off on it. If a 16-year-old student and a CEO can both follow a write-up, it is ready to publish.
 
-The storyline:
+**Roadmap last updated:** 27 Oct 2026
 
-- **Act 1. Frame the problem.** Before building anything, set the constraints and pick the intelligence layer.
-  - Series 1: "Build us an assistant that answers HR questions for 20,000 staff"
-  - Series 2: "Pick an AI model for us, and don't lock us in"
-- **Act 2. Build the core.** The parts that do the actual work: search at scale, routing, action, memory.
-  - Series 3: "Make 2 million product descriptions searchable by meaning"
-  - Series 4: "Answer the easy questions cheaply and the hard ones well"
-  - Series 5: "Our support team needs an agent that can actually issue refunds"
-  - Series 6: "Make the assistant remember customers between conversations"
-- **Act 3. Make it safe and measurable.** Defend it, test it, and see inside it.
-  - Series 7: "Stop the chatbot from leaking customer data"
-  - Series 8: "How do we know the new model version is better, not just different?"
-  - Series 9: "Our AI feature is slow for some customers and nobody can tell why"
-- **Act 4. Run it at scale.** Keep it fast, affordable, and standing up when it grows.
-  - Series 10: "The AI bill tripled last quarter. Fix it without breaking anything"
-  - Series 11: "Run the models ourselves, inside our own network"
-  - Series 12: "Get five teams' AI agents to work together without chaos"
+---
 
-| Series | Topic | Level (L1 to L5) | What it covers | Status | Why a full series, not one article |
-|---|---|---|---|---|---|
-| *Act 1. Frame the problem* | | | | | |
-| 1 | "Build us an assistant that answers HR questions for 20,000 staff" | L4 | Problem framing with the L1 to L5 scale; SLAs and non-functional requirements (time to first token vs total generation time, cost ceilings, throughput); deterministic vs model boundaries; parsing scanned PDFs and tables; chunking (fixed, semantic, recursive, parent-child); dense vs sparse embeddings and hybrid search; query rewriting and HyDE; reranking; context window management and lost in the middle; metadata filtering; document-level access control; grounding and handoff; freshness. Example: an HR policy and benefits assistant for a 20,000-person global company. Plan: [01-hr-assistant/](01-hr-assistant/README.md) | Planned (curtain raiser drafted) | A retrieval engine is a chain: parse, chunk, embed, search, rerank, fit into context. Each link fails in its own way and needs its own decision. |
-| 2 | "Pick an AI model for us, and don't lock us in" | L3 | Model selection matrix: proprietary APIs (such as OpenAI, Anthropic, Gemini) vs open-weights models (such as Llama, Mistral, Qwen); small vs large vs reasoning models; fine-tuning (LoRA, QLoRA) vs in-context learning; gateway pattern and exit plan. Example: a shared model gateway for a bank's internal AI use cases. Plan: [02-model-choice/](02-model-choice/README.md) (not written yet) | Idea | "Which model?" is really five questions: quality, cost, speed, data terms, and exit plan. |
-| *Act 2. Build the core* | | | | | |
-| 3 | "Make 2 million product descriptions searchable by meaning" | L3 | Vector index types (HNSW, IVF, Flat) and their trade-offs; database selection (such as pgvector, Qdrant, Pinecone, Milvus); re-embedding cost; multilingual search; filtering at scale; speed under load. Example: product search for an online retailer with 2 million items in 6 languages. Plan: [03-product-search/](03-product-search/README.md) (not written yet) | Idea | Search that works on 3,000 documents behaves very differently on 2 million. Scale changes every choice. |
-| 4 | "Answer the easy questions cheaply and the hard ones well" | L3 | Semantic routers by intent and complexity; cascading setups (cheapest model first, escalate on failure); escalation signals; routing evaluation. Example: an internal IT service desk assistant for a 50,000-seat company. Plan: [04-model-routing/](04-model-routing/README.md) (not written yet) | Idea | A router is a model making decisions about models. Getting it wrong is silent and expensive, in both directions. |
-| 5 | "Our support team needs an agent that can actually issue refunds" | L4 | Agent control loops (ReAct, Plan-and-Execute, Reflexion); tool and function calling: schemas, validation, execution sandboxes; identity delegation (OAuth, On-Behalf-Of flow) for tool calls; approvals, safe retries, undo, spending limits. Example: a support agent for a telecom with refund, plan-change, and cancellation tools. Plan: [05-refund-agent/](05-refund-agent/README.md) (not written yet) | Idea | Reading is safe. Acting is not. Each action needs its own guard rails and its own identity. |
-| 6 | "Make the assistant remember customers between conversations" | L3 | Short-term context memory vs long-term persistent memory (graph-based, key-value stores, vector history); entity extraction and user memory indexing; what to forget; consent. Example: a trip-planning assistant for a travel company. Plan: [06-assistant-memory/](06-assistant-memory/README.md) (not written yet) | Idea | Memory is a database the model writes to. Deciding what to keep, where, and for how long is several designs, not one. |
-| *Act 3. Make it safe and measurable* | | | | | |
-| 7 | "Stop the chatbot from leaking customer data" | L4 | Prompt injection defence (direct and indirect); PII redaction and masking (such as Presidio, regex and NER filters); hallucination detection; toxicity filtering; red-team testing. Example: a public insurance claims chatbot. Plan: [07-chatbot-safety/](07-chatbot-safety/README.md) (not written yet) | Idea | Attacks come in many shapes. No single filter stops them all, so the defence is layered. |
-| 8 | "How do we know the new model version is better, not just different?" | L4 | RAG triad evals (context relevance, groundedness, answer relevance); LLM-as-a-judge vs heuristic and code-based evals; offline dataset evals vs online production monitoring; regression gates. Example: a contract-review assistant for a legal team. Plan: [08-model-upgrades/](08-model-upgrades/README.md) (not written yet) | Idea | Measuring language quality is hard and easy to fake. It needs a full method, not a tip. |
-| 9 | "Our AI feature is slow for some customers and nobody can tell why" | L4 | Span tracing across prompts, retrieval, and tools (such as OpenTelemetry, LangSmith, Phoenix); token tracking, latency breakdown, cost per user and tenant; explicit and implicit feedback (thumbs, edits); human-in-the-loop review; preference data and fine-tuning datasets built from telemetry. Example: an AI writing assistant inside a B2B software product with 400 customer companies. Plan: [09-ai-observability/](09-ai-observability/README.md) (not written yet) | Idea | You cannot fix what you cannot see, and AI systems hide their work in many layers at once. |
-| *Act 4. Run it at scale* | | | | | |
-| 10 | "The AI bill tripled last quarter. Fix it without breaking anything" | L4 | Exact-match vs semantic caching (such as Redis, GPTCache); provider prompt caching; token rate limiting and quotas; fallback routing during provider outages and HTTP 429 rate-limit errors; cost per answer. Example: a customer service platform handling 1 million conversations a month. Plan: [10-ai-bill/](10-ai-bill/README.md) (not written yet) | Idea | Every saving trades against quality or speed. Each trade needs its own test. |
-| 11 | "Run the models ourselves, inside our own network" | L4 | Model serving (such as vLLM, TGI, Ollama, Triton Inference Server); quantization (INT8, FP4, AWQ, GGUF); speculative decoding; KV-cache optimisation and reuse; batch processing vs real-time streaming (Server-Sent Events, WebSockets). Example: a clinical-notes summariser for a hospital group whose data may not leave its network. Plan: [11-self-hosted-models/](11-self-hosted-models/README.md) (not written yet) | Idea | Owning the GPUs means owning speed, memory, and uptime. Each one is a separate engineering problem. |
-| 12 | "Get five teams' AI agents to work together without chaos" | L5 | Hierarchical supervisor agents vs peer-to-peer agent networks; state management across handoffs (LangGraph and AutoGen patterns as examples); contracts between agents; failure isolation; multi-region operation. Example: an order-to-cash workflow at a logistics company with quoting, booking, and invoicing agents. Plan: [12-agent-teams/](12-agent-teams/README.md) (not written yet) | Idea | One agent is a program. Five agents owned by five teams is an organisation problem as well as a technical one. |
+## How every write-up is built
 
-Level scale: L1 = a single prompt or API call, such as a simple summariser. L3 = a team-level assistant over custom enterprise data with RAG. L5 = a multi-region, regulated, autonomous agent system connected to legacy systems. L2 and L4 sit between their neighbours.
+Each write-up starts with a business brief, said out loud by a stakeholder, and walks the same spine:
 
-### Topic coverage map
+1. The requirement that drives the decision.
+2. Two or three architectural options.
+3. A plain-words trade-off table: Option | Good at | Bad at | Pick it when.
+4. The choice, and why.
+5. What would change my mind.
+6. Failure modes.
+7. Rough numbers for latency, cost and scale, marked [CHECK] until verified.
 
-Every topic has exactly one home. Other series link to it instead of repeating it.
+Every write-up has a matching course lesson. One running example per series, start to finish.
 
-| Topic area | Sub-topic | Home |
+## Level scale
+
+| Level | What it looks like |
+|---|---|
+| L1 | Single user, single API call, an isolated prompt. |
+| L2 | A small pilot: one team, one data source, friendly users. |
+| L3 | Team-level deployment, custom data sources, real active users. |
+| L4 | Organisation-wide: several data sources, access rules, an on-call rota. |
+| L5 | Multi-region enterprise system, highly regulated, dozens of interconnected backend APIs. |
+
+L1, L3 and L5 are the programme's anchor levels. L2 and L4 are the steps in between.
+
+---
+
+## Acts and series
+
+| Act | Purpose | Series |
 |---|---|---|
-| 1. Problem framing and requirements | L1 to L5 complexity scale | Series 1, write-up 2 |
-| | SLAs and NFRs: latency budgets, cost ceilings, throughput | Series 1, write-up 3 |
-| | Deterministic vs non-deterministic boundaries | Series 1, write-up 4 |
-| 2. Model selection, routing, optimisation | Proprietary vs open weights; SLM vs LLM vs reasoning models | Series 2 |
-| | Fine-tuning (LoRA, QLoRA) vs in-context learning | Series 2 |
-| | Semantic routers and cascades | Series 4 |
-| | Quantization, speculative decoding, KV-cache | Series 11 |
-| 3. Retrieval and data pipelines | Multimodal parsing (scans, tables, charts) | Series 1, write-up 5 |
-| | Chunking strategies | Series 1, write-up 6 |
-| | Dense vs sparse embeddings, hybrid search | Series 1, write-up 7 |
-| | Query expansion, rewriting, HyDE | Series 1, write-up 8 |
-| | Reranking and Precision@K | Series 1, write-up 9 |
-| | Context window, lost in the middle, compression | Series 1, write-up 10 |
-| | Vector index types and database selection | Series 3 |
-| 4. Agents and multi-agent systems | ReAct, Plan-and-Execute, Reflexion; tool calling | Series 5 |
-| | Memory architectures, entity extraction | Series 6 |
-| | Hierarchical vs peer-to-peer; state across handoffs | Series 12 |
-| 5. Security and guardrails | Prompt injection, PII redaction, hallucination and toxicity filters | Series 7 |
-| | Document-level access control in vector search | Series 1, write-up 12 |
-| | Identity delegation (OAuth, On-Behalf-Of) for tool calls | Series 5 |
-| 6. Evaluation and observability | RAG triad, LLM-as-a-judge vs code evals, offline vs online | Series 8 |
-| | Span tracing, token and cost per tenant | Series 9 |
-| | Human-in-the-loop, feedback, telemetry-to-fine-tuning pipelines | Series 9 |
-| 7. Scaling, infrastructure, cost | Exact vs semantic caching; prompt caching | Series 10 |
-| | Static KV-cache reuse | Series 11 (Series 10 links to it) |
-| | Batch vs streaming; model serving | Series 11 |
-| | Rate limits, quotas, fallback on outages and 429s | Series 10 |
+| Act 1 | Frame the problem | 1, 2 |
+| Act 2 | Build the core | 3, 4 |
+| Act 3 | Make it safe and measurable | 5, 6 |
+| Act 4 | Run it at scale | 7 to 12 |
 
-### Notes
+| # | Series | Topic (the brief) | Core promise | Core analogy | Running example | Act | Status |
+|---|---|---|---|---|---|---|---|
+| 1 | [#JustAddRAG](01-just-add-rag/README.md) | "Just add RAG over our docs." | Why a 2-week RAG demo takes 6 months to reach enterprise production. | Building a city library | HR policy and benefits assistant for 20,000 employees | 1 | In progress |
+| 2 | #ModelRouting | "Just use the best model for everything." | Stop using expensive top-tier LLMs for simple classification and extraction tasks. | A restaurant kitchen: the head chef does not chop onions | Multi-tier customer support ticket processing | 1 | Not started |
+| 3 | #AgenticAI | "Can the bot just fix the incident itself?" | Move from passive chatbots to autonomous systems that do not loop endlessly or break production. | Hiring a new employee | Automated IT infrastructure incident resolution bot | 2 | Not started |
+| 4 | #DefendingAI | "Make sure it can't leak customer data." | Secure non-deterministic AI pipelines against prompt injection, data leaks and unauthorised access. | Multi-stage municipal water filtration | Financial advisory assistant with access to customer bank accounts | 2 | Not started |
+| 5 | #AIEvalEngine | "Prove it's accurate before we ship it." | If you cannot measure your LLM system's accuracy deterministically, you cannot ship it. | Assembly line quality control | Medical record summarisation engine | 3 | Not started |
+| 6 | #EnterpriseAIScale | "Now roll it out to every country." | Scale from single-prompt prototypes to multi-region, fault-tolerant AI platforms. | From one food truck to a global franchise | Global multi-lingual e-commerce recommendation and support | 3 | Not started |
+| 7 | #AIGovernance (proposed) | "Legal needs to sign this off." | Make an AI system auditable before a regulator or a court asks. | Building permits and inspections | CV screening assistant for a recruitment agency | 4 | Not started |
+| 8 | #LLMOps (proposed) | "Can we change the prompt on Friday afternoon?" | Ship prompt and model changes without breaking what already works. | A pharmacy changing a medicine formula: trials, batch numbers, recalls | Contract clause extraction service for a legal team | 4 | Not started |
+| 9 | #LegacyMeetsAI (proposed) | "Plug the AI into our 15-year-old ERP." | Add AI to old, important systems without rewriting them. | Fitting a modern kitchen into a listed heritage building | AI order assistant in front of a legacy .NET ERP at a manufacturer | 4 | Not started |
+| 10 | #MultimodalAI (proposed) | "It needs to read invoices and take phone calls too." | Design for photos, scans and voice, each with its own cost and latency. | A hospital triage desk that takes walk-ins, phone calls and letters | Insurance claims intake | 4 | Not started |
+| 11 | #SovereignAI (proposed) | "Our data cannot leave the country." | Run models where the law says the data must live. | Running your own power generator instead of using the grid | Public-sector citizen services assistant | 4 | Not started |
+| 12 | #AIPlatform (proposed) | "Every team is building its own chatbot. Make it stop." | Turn many one-off AI projects into one shared platform. | City utilities: shared roads, water and power, not a well in every garden | Internal AI platform for a 50-team enterprise | 4 | Not started |
 
-- **Basics covered elsewhere:** none yet. This is the first programme. Planned links inside it:
-  - Series 3 links to Series 1 write-up 7 for dense, sparse, and hybrid search basics, and covers only index types and scale.
-  - Series 8 links to Series 1 write-up 13 for grounding, and covers measurement.
-  - Series 10 links to Series 1 write-up 3 for cost ceilings, to Series 4 for routing, and to Series 11 for KV-cache reuse.
-  - Series 7 links to Series 1 write-up 12 for document-level access control, and covers attacks and filters.
-- **External inspiration:** the "requirement, options, trade-offs, decision" spine borrows from the Architecture Decision Record idea, first described by Michael Nygard in "Documenting Architecture Decisions" (2011).
-- **Retired** (27 Oct 2026, when the programme was re-planned around the seven topic areas above):
-  - "Let the sales team ask our data warehouse questions in plain English" (text-to-SQL): outside the seven topic areas. May return as a bonus series.
-  - "Automate invoice processing across 300 suppliers' formats": document parsing now lives in Series 1 write-up 5.
-  - "Prove to the auditors how the AI reached that answer": tracing now lives in Series 9.
-  - "Roll it out to 14 countries, each with its own data rules": data locality now sits in Series 11, multi-region in Series 12.
+Series 7 to 12 are proposals. Each one is confirmed and planned in detail before its curtain raiser is written.
+
+### Topic boundaries (so nothing is taught twice)
+
+| Concept | Taught in | Other series link to it |
+|---|---|---|
+| Ingestion, chunking, hybrid search, reranking, document-level access control, context bloat | #JustAddRAG | All |
+| Prompt caching, KV-cache reuse, fine-tuning vs in-context learning, cascading models | #ModelRouting | #JustAddRAG, #EnterpriseAIScale |
+| Agent loops, tool permissions, persistent memory, human-in-the-loop | #AgenticAI | #DefendingAI, #LegacyMeetsAI |
+| Prompt injection (including via PDFs), PII redaction, On-Behalf-Of identity in tool calls | #DefendingAI | #JustAddRAG, #AgenticAI |
+| RAG Triad, LLM-as-a-Judge, regression tests, tracing | #AIEvalEngine | #JustAddRAG, #LLMOps |
+| Rate limits and 429 fallbacks, streaming, vector DB hosting, FinOps chargebacks | #EnterpriseAIScale | #AIPlatform, #SovereignAI |
+
+---
+
+## Master publication tracker
+
+Status is one of: **Planned** (outline ready), **Draft for review**, or **Published D Mon YYYY**.
+
+### Series 1: #JustAddRAG
+
+| # | Write-up | Topic (the brief) | Level | Course lesson | Status | LinkedIn |
+|---|---|---|---|---|---|---|
+| 1 | [Why Does "Just Add RAG" Sound Like 2 Weeks But Take 6 Months?](01-just-add-rag/01-curtain-raiser.md) | "Just add RAG over our HR docs. Two weeks?" | L1 to L5 | [1.1](01-just-add-rag/01-curtain-raiser.course.md) | Draft for review | [Pending Publish] |
+| 2 | What Actually Happens To A PDF Before The Assistant Can Read It? | "We'll just upload the PDFs." | L3 | 1.2 | Planned | [Pending Publish] |
+| 3 | How Small Can You Cut A Policy Before It Stops Making Sense? | "Just split the documents into pages." | L3 | 1.3 | Planned | [Pending Publish] |
+| 4 | Why Does The Assistant Find "Parental Leave" But Miss "HR-PL-204"? | "It's AI search. It understands what we mean." | L3 | 1.4 | Planned | [Pending Publish] |
+| 5 | Why Is The First Search Result So Often Not The Best One? | "Just send the top 20 results to the model." | L3 | 1.5 | Planned | [Pending Publish] |
+| 6 | How Do You Stop A Salary Band Reaching The Wrong Screen? | "Everyone can use it, but nobody sees what they shouldn't." | L4 | 1.6 | Planned | [Pending Publish] |
+| 7 | Which Copy Of The Leave Policy Is The True One? | "The policy changed last week. Does the bot know?" | L4 | 1.7 | Planned | [Pending Publish] |
+| 8 | Why Does Giving The Model More Text Make The Answer Worse? | "Give it everything. The context window is huge." | L3 | 1.8 | Planned | [Pending Publish] |
+| 9 | How Does The Assistant Know Your Country Without Knowing Too Much? | "It should know where I work and what my grade is." | L4 | 1.9 | Planned | [Pending Publish] |
+| 10 | What Does Enterprise RAG Look Like On One Whiteboard? | "Show me the whole thing on one page before we fund it." | L5 | 1.10 | Planned | [Pending Publish] |
+
+### Series 2 to 12
+
+Write-ups are planned in detail when the series before them reaches its finale. Rows are added here at that point.
+
+---
+
+## Post-publish update loop
+
+When a write-up goes live on LinkedIn and the link is shared:
+
+1. Set its status to `Published D Mon YYYY` in this file and in the series README.
+2. Replace `[Pending Publish]` with `[Read on LinkedIn](<URL>)` in both files.
+3. Update the pinned series index block inside the article file, and in every later article of that series.
