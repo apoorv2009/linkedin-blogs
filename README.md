@@ -10,7 +10,7 @@ LinkedIn article series by Apoorv Jain (.NET & AI Architect). Each series has it
 
 | Series | Posts | Status | Index |
 |---|---|---|---|
-| AI System Design: From Real-World Problems to Production-Ready Solutions | 31 | In progress (Parts 1–3 drafted) | [series/ai-system-design](series/ai-system-design/README.md) |
+| AI System Design: From Real-World Problems to Production-Ready Solutions | 32 (curtain raiser + 31) | In progress (Parts 0–3 drafted) | [series/ai-system-design](series/ai-system-design/README.md) |
 
 ## Starting a new series
 

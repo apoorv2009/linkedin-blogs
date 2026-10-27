@@ -1,6 +1,6 @@
 # AI System Design: From Real-World Problems to Production-Ready Solutions
 
-Series plan, version 1 (27 Oct 2026). Covers Stages 1 to 3: reference analysis, roadmap, and a check of the sequence. Articles 1 to 3 are drafted in [articles/](articles/).
+Series plan, version 1 (27 Oct 2026). Covers Stages 1 to 3: reference analysis, roadmap, and a check of the sequence. Part 0 (curtain raiser) and Articles 1 to 3 are drafted in [articles/](articles/).
 
 ---
 
@@ -94,6 +94,8 @@ Write for a non-technical reader first. An engineer should still find it accurat
 
 | Part | Article title | Real-world business problem (Contoso, illustrative) | Main concept | Analogy | Practical solution | Learning outcome | Suggested visual |
 |---|---|---|---|---|---|---|---|
+| **Curtain raiser** |||||||||
+| 0 | The Demo Worked. Now What? | Every AI demo impresses; then come questions about consistency, speed, access, outages and cost | Why AI needs system design; the route of the series | **Reading the trail map before a long walk** | Introduce the seven arcs, who the series is for, and the promise about evidence | The model is the easy part; the system around it decides trust | Left: hiker at a trail-map signboard. Right: route from Demo to Production with seven numbered stops |
 | **Arc 1: The model is a component** |||||||||
 | 1 | Same Invoice, Two Different Totals | Accounts payable pilots AI extraction of invoice fields. A great demo, then prose answers, totals that drift between runs, and a PO number that was never on the invoice. | Probabilistic generation; structured output; validation layers | **Bank deposit slip and teller**: free speech becomes fixed fields, and someone checks them | Schema-constrained output, then business-rule validators, then evidence per field, then routing to a review queue | Model output becomes data only after code has checked it | Left: customer, slip, teller. Right: LLM, schema, validators, auto-post or review queue |
 | 2 | The Support Chat That Got Slower With Every Message | The support assistant is fast at turn 5, slow at turn 40, and by turn 58 has forgotten the customer's key constraint | Stateless model calls; context window; per-turn cost; context rot | **Locum doctor with a patient file** that gets thicker at every visit | Pinned case-facts block, recent-turn window, retrieval of older turns, tool output trimmed, tests that facts survive a summary | Memory is an application design decision, made deliberately or by accident | Left: doctor with a thick file and a summary sheet on top. Right: prompt assembly with a facts block and a window |
@@ -158,7 +160,7 @@ Write for a non-technical reader first. An engineer should still find it accurat
 
 **Variety of analogies:** 31 analogies from banking, healthcare, travel, logistics, hospitality, journalism, hiring, education, aviation, building, theatre and events. None repeats, and none reuses the discarded series' "city library".
 
-**Pacing for a daily series:** a weekday schedule gives 31 working days. Arcs end at Parts 3, 10, 12, 17, 20, 27 and 31, which are natural points to post a short recap.
+**Pacing for a daily series:** a weekday schedule gives 32 working days, including the curtain raiser (Part 0). Arcs end at Parts 3, 10, 12, 17, 20, 27 and 31, which are natural points to post a short recap.
 
 ---
 

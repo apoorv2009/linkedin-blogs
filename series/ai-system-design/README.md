@@ -4,7 +4,7 @@ A daily LinkedIn series by Apoorv Jain (.NET & AI Architect). Each post starts f
 
 - **Plan, roadmap and style guide:** [SERIES-PLAN.md](SERIES-PLAN.md)
 - **Articles and cover images:** [articles/](articles/)
-- **Length:** 31 posts in 7 arcs, one post per weekday.
+- **Length:** a curtain raiser (Part 0), then 31 posts in 7 arcs, one post per weekday.
 
 ## Index
 
@@ -12,6 +12,8 @@ Status is one of: **Planned**, **Draft for review**, or **Published D Mon YYYY**
 
 | Part | Title | Status | GitHub link | LinkedIn post |
 |---|---|---|---|---|
+| **Curtain raiser** |||||
+| 0 | The Demo Worked. Now What? | Draft for review | [GitHub](https://github.com/apoorv2009/linkedin-blogs/blob/main/series/ai-system-design/articles/00-the-demo-worked-now-what.md) | Not yet published |
 | **Arc 1: The model is a component** |||||
 | 1 | Same Invoice, Two Different Totals | Draft for review | [GitHub](https://github.com/apoorv2009/linkedin-blogs/blob/main/series/ai-system-design/articles/01-same-invoice-two-totals.md) | Not yet published |
 | 2 | The Support Chat That Got Slower With Every Message | Draft for review | [GitHub](https://github.com/apoorv2009/linkedin-blogs/blob/main/series/ai-system-design/articles/02-chat-that-got-slower.md) | Not yet published |
