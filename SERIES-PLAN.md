@@ -54,6 +54,18 @@ The book is about building systems that *use* LLMs, not about building models. I
 
 ---
 
+## Writing style (updated 27 Oct 2026 after feedback)
+
+Write for a non-technical reader first. An engineer should still find it accurate.
+
+- **Length:** about 450 to 550 words per post. One idea per post.
+- **Words:** short sentences and everyday words. Explain any technical term in plain words the first time it appears, or leave it out.
+- **No code** in the post body. Diagrams only in the image.
+- **Shape:** a short story, why it happens, an everyday comparison (and where it breaks down), the simple fix, what it means for the business, the key takeaway, a question for readers.
+- **For the engineers:** one italic line at the end naming the technical terms and tools, so technical readers know the depth is there.
+- The image brief, the generation prompt and two or three references sit below the post. They are not part of what gets published.
+- The roadmap table below still lists technical concepts. They are the *ideas behind* each post, not the vocabulary of the post.
+
 ## The direction of the series
 
 **One fictional company, many real problems.** Every scenario takes place at **Contoso**, Microsoft's long-running fictional company. .NET and Azure readers recognise it at once as an illustrative example, so no hypothetical incident can be mistaken for a documented one. Contoso has the departments the scenarios need: accounts payable, customer support, HR, finance analysts, engineering, and operations.
