@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="627" viewBox="0 0 1200 627" font-family="Segoe UI, Inter, Arial, sans-serif">
+  <defs>
+    <marker id="arrN" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#1F2A44"/></marker>
+    <marker id="arrT" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2A9D8F"/></marker>
+    <marker id="arrC" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#D1495B"/></marker>
+  </defs>
+  <rect width="1200" height="627" fill="#F6F1E7"/>
+
+  <!-- header -->
+  <rect x="40" y="28" width="230" height="30" rx="15" fill="#1F2A44"/>
+  <text x="155" y="48" font-size="14" fill="#F6F1E7" text-anchor="middle" font-weight="600">AI System Design · Part 3</text>
+  <text x="600" y="104" font-size="32" fill="#1F2A44" text-anchor="middle" font-weight="700">One front desk between your teams and your AI</text>
+
+  <text x="300" y="160" font-size="16" fill="#1F2A44" text-anchor="middle" letter-spacing="2" opacity="0.7">AT THE TRAVEL DESK</text>
+  <text x="900" y="160" font-size="16" fill="#1F2A44" text-anchor="middle" letter-spacing="2" opacity="0.7">IN THE AI SYSTEM</text>
+  <line x1="600" y1="150" x2="600" y2="580" stroke="#1F2A44" stroke-width="1" opacity="0.15"/>
+
+  <!-- departures board -->
+  <rect x="90" y="186" width="420" height="120" rx="8" fill="#1F2A44"/>
+  <text x="110" y="212" font-size="13" fill="#F6F1E7" opacity="0.7" letter-spacing="1.5">DEPARTURES</text>
+  <text x="110" y="240" font-size="15" fill="#F6F1E7" font-family="Consolas, monospace">14:10  CITY A</text>
+  <text x="490" y="240" font-size="15" fill="#2A9D8F" text-anchor="end" font-family="Consolas, monospace">ON TIME</text>
+  <rect x="100" y="252" width="400" height="26" rx="4" fill="#D1495B" opacity="0.25"/>
+  <text x="110" y="270" font-size="15" fill="#F6F1E7" font-family="Consolas, monospace">14:25  CITY B</text>
+  <text x="490" y="270" font-size="15" fill="#FF8A99" text-anchor="end" font-family="Consolas, monospace" font-weight="700">CANCELLED</text>
+  <text x="110" y="296" font-size="15" fill="#F6F1E7" font-family="Consolas, monospace">15:05  CITY B</text>
+  <text x="490" y="296" font-size="15" fill="#2A9D8F" text-anchor="end" font-family="Consolas, monospace">ON TIME</text>
+
+  <!-- desk agent behind counter -->
+  <g transform="translate(380,354)">
+    <circle cx="0" cy="0" r="22" fill="#E8B996"/>
+    <path d="M-34,72 Q-34,30 0,30 Q34,30 34,72 Z" fill="#2A9D8F"/>
+  </g>
+  <!-- counter -->
+  <rect x="280" y="424" width="250" height="18" rx="4" fill="#1F2A44"/>
+  <rect x="295" y="442" width="220" height="90" fill="#1F2A44" opacity="0.10"/>
+  <text x="405" y="490" font-size="15" fill="#1F2A44" text-anchor="middle" font-weight="600">Travel desk</text>
+  <!-- new ticket -->
+  <g transform="translate(250,384)">
+    <rect x="0" y="0" width="96" height="38" rx="5" fill="#FFFFFF" stroke="#2A9D8F" stroke-width="2.5"/>
+    <line x1="74" y1="4" x2="74" y2="34" stroke="#2A9D8F" stroke-width="1.5" stroke-dasharray="3 3"/>
+    <text x="37" y="25" font-size="12" fill="#1F2A44" text-anchor="middle" font-weight="700">Rebooked</text>
+  </g>
+  <!-- traveller in front with suitcase -->
+  <g transform="translate(160,396)">
+    <circle cx="0" cy="0" r="22" fill="#8D5B3E"/>
+    <path d="M-36,140 Q-36,30 0,30 Q36,30 36,140 Z" fill="#1F2A44" opacity="0.85"/>
+    <path d="M28,48 Q60,40 90,8" fill="none" stroke="#1F2A44" stroke-opacity="0.85" stroke-width="12" stroke-linecap="round"/>
+  </g>
+  <rect x="80" y="470" width="44" height="62" rx="6" fill="#E9A23B"/>
+  <rect x="94" y="460" width="16" height="12" rx="3" fill="none" stroke="#1F2A44" stroke-width="3"/>
+  <text x="160" y="560" font-size="15" fill="#1F2A44" text-anchor="middle" font-weight="600">Traveller</text>
+
+  <!-- RIGHT: teams -->
+  <rect x="640" y="230" width="110" height="46" rx="10" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"/>
+  <text x="695" y="259" font-size="15" fill="#1F2A44" text-anchor="middle" font-weight="600">Support</text>
+  <rect x="640" y="316" width="110" height="46" rx="10" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"/>
+  <text x="695" y="345" font-size="15" fill="#1F2A44" text-anchor="middle" font-weight="600">Finance</text>
+  <rect x="640" y="402" width="110" height="46" rx="10" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"/>
+  <text x="695" y="431" font-size="15" fill="#1F2A44" text-anchor="middle" font-weight="600">HR</text>
+  <path d="M750,253 C780,253 790,320 812,328" fill="none" stroke="#1F2A44" stroke-width="2" marker-end="url(#arrN)"/>
+  <path d="M750,339 L812,339" fill="none" stroke="#1F2A44" stroke-width="2" marker-end="url(#arrN)"/>
+  <path d="M750,425 C780,425 790,358 812,350" fill="none" stroke="#1F2A44" stroke-width="2" marker-end="url(#arrN)"/>
+
+  <!-- gateway -->
+  <rect x="816" y="268" width="140" height="142" rx="14" fill="#1F2A44"/>
+  <text x="886" y="300" font-size="17" fill="#F6F1E7" text-anchor="middle" font-weight="700">Gateway</text>
+  <text x="886" y="330" font-size="12.5" fill="#F6F1E7" text-anchor="middle" opacity="0.85">One set of accounts</text>
+  <text x="886" y="352" font-size="12.5" fill="#F6F1E7" text-anchor="middle" opacity="0.85">Fair limits per team</text>
+  <text x="886" y="374" font-size="12.5" fill="#F6F1E7" text-anchor="middle" opacity="0.85">Spend tracked</text>
+  <text x="886" y="396" font-size="12.5" fill="#E9A23B" text-anchor="middle" font-weight="600">Switches to backup</text>
+
+  <!-- providers -->
+  <path d="M956,300 C990,300 1000,250 1034,250" fill="none" stroke="#D1495B" stroke-width="3" stroke-dasharray="7 6" marker-end="url(#arrC)"/>
+  <rect x="1038" y="222" width="126" height="58" rx="10" fill="#FFFFFF" stroke="#D1495B" stroke-width="2.5"/>
+  <text x="1101" y="246" font-size="14" fill="#1F2A44" text-anchor="middle" font-weight="700">Main AI</text>
+  <text x="1101" y="266" font-size="12.5" fill="#D1495B" text-anchor="middle" font-weight="600">having trouble</text>
+  <path d="M956,378 C990,378 1000,430 1034,430" fill="none" stroke="#2A9D8F" stroke-width="3" marker-end="url(#arrT)"/>
+  <rect x="1038" y="402" width="126" height="58" rx="10" fill="#2A9D8F"/>
+  <text x="1101" y="426" font-size="14" fill="#FFFFFF" text-anchor="middle" font-weight="700">Backup AI</text>
+  <text x="1101" y="446" font-size="12.5" fill="#FFFFFF" text-anchor="middle">tested in advance</text>
+
+  <!-- matching badges -->
+  <circle cx="316" cy="490" r="13" fill="#E9A23B"/><text x="316" y="495" font-size="14" font-weight="700" fill="#1F2A44" text-anchor="middle">1</text>
+  <circle cx="530" cy="225" r="13" fill="#E9A23B"/><text x="530" y="230" font-size="14" font-weight="700" fill="#1F2A44" text-anchor="middle">2</text>
+  <circle cx="298" cy="368" r="13" fill="#E9A23B"/><text x="298" y="373" font-size="14" font-weight="700" fill="#1F2A44" text-anchor="middle">3</text>
+  <circle cx="886" cy="250" r="13" fill="#E9A23B"/><text x="886" y="255" font-size="14" font-weight="700" fill="#1F2A44" text-anchor="middle">1</text>
+  <circle cx="1101" cy="200" r="13" fill="#E9A23B"/><text x="1101" y="205" font-size="14" font-weight="700" fill="#1F2A44" text-anchor="middle">2</text>
+  <circle cx="1101" cy="484" r="13" fill="#E9A23B"/><text x="1101" y="489" font-size="14" font-weight="700" fill="#1F2A44" text-anchor="middle">3</text>
+
+  <text x="40" y="602" font-size="13" fill="#1F2A44" opacity="0.6" xml:space="preserve">1  One front desk  ·  2  The supplier has a problem  ·  3  A tested backup keeps people moving</text>
+  <text x="1160" y="602" font-size="13" fill="#1F2A44" opacity="0.6" text-anchor="end">Illustrative</text>
+</svg>

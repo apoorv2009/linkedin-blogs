@@ -2,6 +2,8 @@
 
 *AI System Design: From Real-World Problems to Production-Ready Solutions · Part 1*
 
+![A bank teller checking a deposit slip, compared with AI output going through automatic checks](images/01-same-invoice-two-totals.png)
+
 > Status: Draft for review · ~550 words · Contoso is a fictional company; the scenario is illustrative
 
 ---
@@ -63,6 +65,8 @@ An AI answer isn't business data until it has been checked. Give it fixed boxes 
 ---
 
 ## Supporting visual (not part of the post)
+
+**Ready to use:** [images/01-same-invoice-two-totals.png](images/01-same-invoice-two-totals.png) (1200 × 627, the LinkedIn article cover size). Edit [images/01-same-invoice-two-totals.svg](images/01-same-invoice-two-totals.svg) to change it. The prompt below is an optional alternative if you want an AI-generated illustration instead.
 
 **Concept:** Left, a customer hands a deposit slip to a bank teller, with a supervisor's desk behind. Right, an invoice flows through "AI fills the form", then "Automatic checks", then splits into "Approved" and "Sent to a person". Dashed lines link slip to form, teller to checks, supervisor to person.
 

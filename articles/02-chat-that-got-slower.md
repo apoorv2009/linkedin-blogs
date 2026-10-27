@@ -2,6 +2,8 @@
 
 *AI System Design: From Real-World Problems to Production-Ready Solutions · Part 2*
 
+![A doctor reading a one-page summary instead of a thick patient file, compared with what the AI reads on every message](images/02-chat-that-got-slower.png)
+
 > Status: Draft for review · ~550 words · Contoso is a fictional company; the scenario is illustrative
 
 ---
@@ -67,6 +69,8 @@ The AI has no memory. Your system decides what it remembers, whether you planned
 ---
 
 ## Supporting visual (not part of the post)
+
+**Ready to use:** [images/02-chat-that-got-slower.png](images/02-chat-that-got-slower.png) (1200 × 627, the LinkedIn article cover size). Edit [images/02-chat-that-got-slower.svg](images/02-chat-that-got-slower.svg) to change it. The prompt below is an optional alternative if you want an AI-generated illustration instead.
 
 **Concept:** Left, a doctor reading a one-page summary sheet, next to a huge overflowing patient file with a red flag buried in the middle. Right, one AI request drawn as a short stack: "Instructions", "Last few messages", "Key facts" (highlighted), "New question". The full history sits in a separate store, labelled "Look up when needed".
 

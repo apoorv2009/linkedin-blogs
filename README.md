@@ -18,7 +18,7 @@ Status is one of: **Planned**, **Draft for review**, or **Published D Mon YYYY**
 
 ## Before publishing each article
 
-1. Work through the "Verify before publishing" note at the end of the article.
+1. Check the facts against the references at the end of the article.
 2. Confirm any first-person project story (ShopSense) matches what you built.
-3. Generate the image from the prompt in the article, then check that its labels are spelled correctly.
+3. Upload the cover image from `articles/images/` (1200 × 627 PNG) with the post.
 4. Update this tracker.

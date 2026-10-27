@@ -2,6 +2,8 @@
 
 *AI System Design: From Real-World Problems to Production-Ready Solutions · Part 3*
 
+![A travel desk rebooking a traveller after a cancelled flight, compared with an AI gateway switching to a tested backup](images/03-provider-bad-afternoon.png)
+
 > Status: Draft for review · ~640 words · Contoso is a fictional company; the scenario is illustrative. The "From my own project" paragraph is the author's own work: **confirm the wording before publishing.**
 
 ---
@@ -66,6 +68,8 @@ Don't let a problem at your AI provider become a problem for your customers. Put
 ---
 
 ## Supporting visual (not part of the post)
+
+**Ready to use:** [images/03-provider-bad-afternoon.png](images/03-provider-bad-afternoon.png) (1200 × 627, the LinkedIn article cover size). Edit [images/03-provider-bad-afternoon.svg](images/03-provider-bad-afternoon.svg) to change it. The prompt below is an optional alternative if you want an AI-generated illustration instead.
 
 **Concept:** Left, an airport travel desk rebooking a traveller after a cancelled flight. Right, three team boxes feed one "Gateway". From it, a red dashed line goes to "Main AI (having trouble)" and a green line to "Tested backup".
 
