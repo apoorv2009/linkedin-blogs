@@ -37,10 +37,11 @@ The book is about building systems that *use* LLMs, not about building models. I
 | Durable execution, idempotency and state | Agents that act must survive restarts and must not repeat side effects. | Part 15 |
 | Depth of evaluation | Missing from the book: retrieval metrics (recall@k, MRR), keeping retrieval separate from generation, bias and calibration of the LLM judge, and maintaining the evaluation dataset. | Parts 7, 18 |
 | Indirect prompt injection | The book focuses on injection by the user. Documents, emails and tool results that carry instructions are the bigger enterprise risk. | Part 19 |
-| Changing prompts and models safely (LLMOps) | Versioning, gated releases, canaries and rollback for prompts and models. | Part 24 |
+| Changing prompts and models safely (LLMOps) | Versioning, gated releases, canaries and rollback for prompts and models. | Part 26 |
 | Freshness, versioning and deletion in knowledge bases | "Updated yesterday" and "deleted under GDPR" are both ingestion problems. | Parts 4, 5 |
-| Governance, audit and regulation | Audit trails, decision records, and the EU AI Act risk categories for HR and credit use cases. | Parts 16, 23 |
-| Adoption and trust UX | Citations, visible uncertainty and graceful refusal decide whether people use the system. | Parts 9, 21 |
+| Governance, audit and regulation | Audit trails, decision records, and the EU AI Act risk categories for HR and credit use cases. | Parts 16, 30 |
+| Adoption and trust UX | Citations, visible uncertainty and graceful refusal decide whether people use the system. | Parts 9, 28 |
+| Classic system design applied to AI (added 27 Oct 2026) | Architects expect requirements, back-of-the-envelope estimates, scaling, availability, disaster recovery, deployment and multi-tenancy to be designed explicitly, with worked numbers, for the AI parts of the system as well as the rest. | Parts 21 to 27 |
 | .NET and Azure implementation | The book's examples are Python and AWS (OpenSearch, Neptune, Spark, Glue). Your audience works in .NET and Azure. | Throughout, where it fits |
 
 ### Claims in the reference that need careful handling (your credibility matters)
@@ -64,6 +65,7 @@ Write for a non-technical reader first. An engineer should still find it accurat
 - **Shape:** a short story, why it happens, an everyday comparison (and where it breaks down), the simple fix, what it means for the business, the key takeaway, a question for readers.
 - **For the engineers:** one italic line at the end naming the technical terms and tools, so technical readers know the depth is there.
 - The image brief, the generation prompt and two or three references sit below the post. They are not part of what gets published.
+- **The numbers (Parts 22 to 25):** one small worked example a non-technical reader can follow. Example inputs are marked illustrative; real quotas, prices and SLAs come from the provider's official pages on the publication date, never from memory.
 - The roadmap table below still lists technical concepts. They are the *ideas behind* each post, not the vocabulary of the post.
 
 ## The direction of the series
@@ -72,18 +74,19 @@ Write for a non-technical reader first. An engineer should still find it accurat
 
 **Four questions per article.** What is the problem? Why is it harder than it looks? Which concept helps? Which architectural decisions make it reliable?
 
-**An architecture that is built up step by step.** Each article grows a baseline (v0) into a robust design (v1, v2, v3) and names the limitation that forces each step. The same Contoso platform grows across the series, so Part 25 can draw the whole system from decisions the reader has already seen being made.
+**An architecture that is built up step by step.** Each article grows a baseline (v0) into a robust design (v1, v2, v3) and names the limitation that forces each step. The same Contoso platform grows across the series, so Part 31 can draw the whole system from decisions the reader has already seen being made.
 
 **Evidence over claims.** Every number is either cited, clearly marked as a hypothetical with its assumptions stated, or taken from your ShopSense build. Nothing else.
 
-**Six arcs:**
+**Seven arcs:**
 
 1. **The model is a component, not the product** (Parts 1 to 3). How LLMs actually behave as a dependency.
 2. **Grounding answers in what the organisation knows** (Parts 4 to 10).
 3. **Memory and context** (Parts 11 to 12).
 4. **From answering to acting** (Parts 13 to 17).
 5. **Earning trust: evaluation and security** (Parts 18 to 20).
-6. **Running it for real** (Parts 21 to 25).
+6. **Designing for scale and failure** (Parts 21 to 27). Requirements, back-of-the-envelope maths, scaling, availability, recovery, deployment and multi-tenancy.
+7. **Running it for real** (Parts 28 to 31).
 
 ---
 
@@ -116,36 +119,46 @@ Write for a non-technical reader first. An engineer should still find it accurat
 | 18 | It Passed the Demo. Will It Pass Monday? | Leadership asks, "How do we know it's good?" | Golden datasets; metrics per stage; LLM-as-judge and its biases; regression gates | **Driving test**: one impressive lap is not a licence | Golden set from real tickets, scorers for retrieval and answer, an eval gate in CI/CD, results committed before and after each change | If you can't show the before and after, you can't claim it's better | Left: driving test course. Right: test set, scorers, gate, deploy |
 | 19 | The Document That Gave the AI Instructions | A supplier PDF contains hidden text telling the assistant to approve payment | Direct and indirect prompt injection; treating data as untrusted; output handling | **Fake "urgent payment" memo in the accounts-payable tray** | Mark retrieved and tool content as data, screen it, least-privilege tools, no autonomous payment. ShopSense lesson. | Every input channel is an attack surface | Left: forged memo in an inbox tray. Right: content, injection screen, sandboxed model, gated tools |
 | 20 | Guardrails Are Layers, Not a Wall | "Can we just add a filter?" | Input and output checks; PII masking; policy checks; rate and cost limits | **Airport security**: several checkpoints, none of them perfect | Layered checks along the request path, with false-positive rates measured | No single control is enough; measure what each layer catches | Left: airport checkpoints. Right: request path with numbered control points |
-| **Arc 6: Running it for real** |||||||||
-| 21 | Fast in the Demo, 18 Seconds in Production | Users abandon the assistant during peak hours | TTFT, TPOT; streaming; sync vs async paths; latency budgets | **Restaurant service**: bread arrives at once, catering is prepared ahead | Latency budget per stage, SSE streaming from ASP.NET Core, async queue for long jobs | Perceived latency and real latency are designed separately | Left: courses arriving over time. Right: latency waterfall |
-| 22 | You Can't Fix What You Can't See | One complaint, a million traces | Nested tracing; OpenTelemetry GenAI conventions; cost per span; cache hit rate as a signal | **Air traffic control**: each flight tracked, and the anomaly found | OpenTelemetry, Application Insights, nested spans per agent and tool, PII redaction | Observability for AI means tracing decisions, not just requests | Left: radar room. Right: trace tree with a highlighted slow span |
-| 23 | The AI Bill Nobody Forecast | Finance asks why spend tripled this month | Token economics; model routing; exact, semantic and prompt caching; budgets and chargeback | **Hospital triage**: not every patient needs the specialist | Router by task type, caching layers, token quotas per team in the gateway | Cost is an architectural property | Left: triage desk. Right: router sending traffic to model tiers, cache in front |
-| 24 | Changing a Prompt Is a Production Deployment | A "small wording tweak" on Friday breaks extraction on Monday | Prompt and model versioning; canaries; eval gates; rollback | **Recipe change at a restaurant chain**: test kitchen before every branch | Prompts as versioned artifacts, staged rollout, golden-set gate, quick rollback | Treat prompts and model versions like code | Left: test kitchen to branches. Right: version, eval, canary, full rollout |
-| 25 | The Whole Contoso Platform, One Decision at a Time | "Show me the full architecture before we fund phase 2" | Reference architecture; deployment choices (public API, private cloud, self-hosted, data residency) | **City planning**: shared roads and utilities, not a well in every garden | End-to-end diagram built from Parts 1 to 24, with a decision log | Architecture is the record of trade-offs, not the boxes | Fold-out blueprint where each component is tagged with its Part number |
+| **Arc 6: Designing for scale and failure** |||||||||
+| 21 | Before Any Boxes: What Are We Actually Building? | Leadership asks for "an AI assistant for support" with no numbers: how many users, how fast, how accurate, what data | Functional and non-functional requirements; turning vague wishes into measurable targets (latency, accuracy, availability, cost, data sensitivity) | **An architect visiting a family before drawing a house**: how many people live there, who struggles with stairs, what the budget is | A one-page requirements sheet with a target number for each quality, and the trade-offs leadership has to choose between | Design starts from numbers the business agrees to, not from technology | Left: architect with a family and a sketch. Right: requirement cards feeding a design |
+| 22 | How Much AI Will Monday Morning Need? | Nobody can say whether the planned capacity and budget are enough for launch | Back-of-the-envelope estimation: users → requests → tokens per minute → capacity and monthly cost; peak-to-average ratio; headroom | **Catering a wedding**: guests × plates, plus a margin because people come back for seconds | A short worked estimate with every assumption stated, checked against the provider's published quotas and prices on the day | A rough number with clear assumptions beats a precise guess | Left: caterer's notepad. Right: a funnel from users down to tokens and cost |
+| 23 | 9 a.m. Rush, 2 a.m. Silence | Contoso pays for peak capacity all night, or runs out of capacity at peak | Scaling up and down: pay-per-use vs reserved model capacity; queues to smooth peaks; autoscaling the app tier; scaling search separately | **Toll plaza**: more booths open at rush hour, season-pass lanes for regulars, a waiting lane when it is full | Reserved capacity for the steady base, pay-per-use for spikes, a queue for batch work, autoscaling for web and worker tiers (Azure Container Apps or App Service) | Scale each layer for its own reason | Left: toll plaza with booths opening. Right: base and burst capacity bands over a day |
+| 24 | What Does 99.9% Really Mean? | Every service promises 99.9%, yet the assistant as a whole is down more often than that | Availability maths: chained dependencies multiply (99.9% × 99.9% ≈ 99.8%); redundancy; zones and regions; active-active vs active-passive; graceful degradation | **A building's backup generator**: it keeps the lifts and emergency lights on, not the whole building | Map the dependency chain, add redundancy where the maths says it matters, and design a reduced "search-only" mode for when the AI is unavailable | Availability is designed across the whole chain, not bought per service | Left: building with a generator powering the essentials. Right: dependency chain with uptime per link |
+| 25 | The Region Went Down. How Long Until We're Back? | A regional outage. Rebuilding the search index takes hours that nobody planned for. | Disaster recovery: RTO and RPO; what must be backed up (index, conversations, prompts, settings); rebuild-time estimates; recovery drills | **Spare house keys and the locksmith**: how long you can wait outside, and what you would lose | RTO and RPO per component, backups or a standby for what is slow to rebuild, infrastructure as code for the rest, a scheduled recovery drill | Recovery time is measured in a drill, not assumed | Left: locked door, spare key, locksmith's clock. Right: timeline from outage to recovery per component |
+| 26 | From Laptop to Production Without Crossing Fingers | Releases are manual, test and production are set up differently, a "small wording tweak" to a prompt on Friday breaks extraction on Monday, and a model version is retired without warning | Deployment: environments; infrastructure as code (Bicep); CI/CD; blue-green and canary releases; prompts and model versions as versioned artifacts behind evaluation gates; rollback (absorbs the former "Changing a Prompt Is a Production Deployment") | **A theatre's dress rehearsal and preview nights** before opening night | Pipelines that build identical environments, a golden-set evaluation gate, gradual rollout, pinned model versions with a retirement calendar, one-step rollback | Code, prompts, models and infrastructure all ship through the same safe path | Left: rehearsal, previews, opening night. Right: pipeline from commit to eval gate to canary to full rollout |
+| 27 | One Platform, Twenty Departments | One department's heavy use slows everyone else, and each department's data must stay its own | Multi-tenancy: shared vs dedicated components; noisy neighbours; per-tenant limits; data isolation | **An apartment building**: shared lift and water supply, separate front-door locks | Shared gateway and app tier with per-tenant quotas, separate indexes or filtered access per tenant, dedicated capacity only where a tenant needs it | Share what is cheap to share; isolate what is costly to leak | Left: apartment block. Right: shared platform layers with separate tenant compartments |
+| **Arc 7: Running it for real** |||||||||
+| 28 | Fast in the Demo, 18 Seconds in Production | Users abandon the assistant during peak hours | TTFT, TPOT; streaming; sync vs async paths; latency budgets | **Restaurant service**: bread arrives at once, catering is prepared ahead | Latency budget per stage, SSE streaming from ASP.NET Core, async queue for long jobs | Perceived latency and real latency are designed separately | Left: courses arriving over time. Right: latency waterfall |
+| 29 | You Can't Fix What You Can't See | One complaint, a million traces | Nested tracing; OpenTelemetry GenAI conventions; cost per span; cache hit rate as a signal | **Air traffic control**: each flight tracked, and the anomaly found | OpenTelemetry, Application Insights, nested spans per agent and tool, PII redaction | Observability for AI means tracing decisions, not just requests | Left: radar room. Right: trace tree with a highlighted slow span |
+| 30 | The AI Bill Nobody Forecast | Finance asks why spend tripled this month | Token economics; model routing; exact, semantic and prompt caching; budgets and chargeback | **Hospital triage**: not every patient needs the specialist | Router by task type, caching layers, token quotas per team in the gateway | Cost is an architectural property | Left: triage desk. Right: router sending traffic to model tiers, cache in front |
+| 31 | The Whole Contoso Platform, One Decision at a Time | "Show me the full architecture before we fund phase 2" | Reference architecture; deployment choices (public API, private cloud, self-hosted, data residency) | **City planning**: shared roads and utilities, not a well in every garden | End-to-end diagram built from Parts 1 to 30, with a decision log | Architecture is the record of trade-offs, not the boxes | Fold-out blueprint where each component is tagged with its Part number |
 
 ---
 
 ## Stage 3: Checking the sequence
 
-**Prerequisites run forward only.** Part 1 (output is probabilistic, so validate it) underpins Parts 9, 14 and 18. Part 2 (statelessness, tokens) underpins Parts 11, 12 and 23. Part 3 (gateway) is the place where Parts 20, 22 and 23 later add controls. Parts 4 to 7 build retrieval before Part 8 secures it and Part 9 makes it verifiable. Agents (13 to 17) come after tools and state are understood. Evaluation (18) comes after there is enough to evaluate, although Parts 1, 7 and 9 already introduce measuring locally, so readers never meet a design without a way to test it.
+**Prerequisites run forward only.** Part 1 (output is probabilistic, so validate it) underpins Parts 9, 14 and 18. Part 2 (statelessness, tokens) underpins Parts 11, 12, 22 and 30. Part 3 (gateway) is the place where Parts 20, 23, 27, 29 and 30 later add controls. Parts 4 to 7 build retrieval before Part 8 secures it and Part 9 makes it verifiable. Agents (13 to 17) come after tools and state are understood. Evaluation (18) comes after there is enough to evaluate, although Parts 1, 7 and 9 already introduce measuring locally, so readers never meet a design without a way to test it. The scale-and-failure arc (21 to 27) comes once the components exist, so its requirements and estimates describe a real system: Part 3's failover is generalised in Part 24, and Part 18's evaluation set becomes the release gate in Part 26.
 
 **No topic is taught twice:**
 
 | Concept | Taught in | Referenced in |
 |---|---|---|
-| Tokens, context window, statelessness | 2 | 11, 12, 23 |
+| Tokens, context window, statelessness | 2 | 11, 12, 22, 30 |
 | Structured output, validation | 1 | 9, 14, 18 |
-| Gateway, retries, circuit breaker | 3 | 20, 22, 23 |
-| Caching (exact, semantic, prompt) | 23 (prompt cache first mentioned in 12) | 21 |
+| Gateway, retries, circuit breaker | 3 | 20, 24, 27, 29, 30 |
+| Caching (exact, semantic, prompt) | 30 (prompt cache first mentioned in 12) | 28 |
 | Retrieval metrics | 7 | 18 |
 | Human approval | 16 | 15, 19 |
 | Prompt injection | 19 | 8, 14, 20 |
+| Capacity estimation | 22 | 23, 25, 30 |
+| Availability and redundancy | 24 | 3, 25, 31 |
+| Versioning and gated releases | 26 | 18, 31 |
 
-**Gaps closed by the plan:** identity (8, 16), memory (2, 11), tools and MCP (14), durable execution (15), deep evaluation (7, 18), indirect injection (19), LLMOps (24), deployment and residency (25).
+**Gaps closed by the plan:** identity (8, 16), memory (2, 11), tools and MCP (14), durable execution (15), deep evaluation (7, 18), indirect injection (19), LLMOps (26), classic system design (21 to 27), deployment and residency (26, 31).
 
-**Variety of analogies:** 25 analogies from banking, healthcare, travel, logistics, hospitality, journalism, hiring, education and aviation. None repeats, and none reuses the discarded series' "city library".
+**Variety of analogies:** 31 analogies from banking, healthcare, travel, logistics, hospitality, journalism, hiring, education, aviation, building, theatre and events. None repeats, and none reuses the discarded series' "city library".
 
-**Pacing for a daily series:** a weekday schedule gives 25 working days. Arcs end at Parts 3, 10, 12, 17, 20 and 25, which are natural points to post a short recap.
+**Pacing for a daily series:** a weekday schedule gives 31 working days. Arcs end at Parts 3, 10, 12, 17, 20, 27 and 31, which are natural points to post a short recap.
 
 ---
 
