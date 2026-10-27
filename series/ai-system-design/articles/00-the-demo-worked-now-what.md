@@ -22,7 +22,7 @@ None of these is really a question about the AI model. They are questions about 
 
 ## What to expect
 
-Starting tomorrow: one short post every weekday, 31 posts in all. Each post:
+Over the coming weeks, I'll share 31 short posts, one at a time. Each post:
 
 - starts with a business problem at **Contoso**, a made-up company, so no example is mistaken for a real incident,
 - explains it with an everyday comparison, like a bank teller, a doctor's file or a travel desk,
