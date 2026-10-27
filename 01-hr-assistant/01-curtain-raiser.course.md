@@ -82,12 +82,12 @@ Option C, built in stages. Start with B's simplicity but with **who is asking** 
 
 | Failure | What the employee sees | Root cause | Designed in write-up |
 |---|---|---|---|
-| Wrong country | German employee told the global 20-day rule | No country filter on search | 5 |
-| Stale answer | Old leave figure, quoted with a confident citation | Superseded documents still in the index | 10 |
-| Leak | Salary range shown to someone not allowed to see it | Permissions checked after search, or not at all | 6 |
-| Made-up personal answer | "You have 20 days left" read from a policy, not a record | No route to live HR data | 2, 3 |
-| Overreach | Something close to legal advice, stated as fact | No scope limits or human handoff | 2, 8 |
-| Silent drift | Quality drops after a policy or model change, nobody notices | No regular answer testing | 9 |
+| Wrong country | German employee told the global 20-day rule | No country filter on search | 11 |
+| Stale answer | Old leave figure, quoted with a confident citation | Superseded documents still in the index | 14 |
+| Leak | Salary range shown to someone not allowed to see it | Permissions checked after search, or not at all | 12 |
+| Made-up personal answer | "You have 20 days left" read from a policy, not a record | No route to live HR data | 4 |
+| Overreach | Something close to legal advice, stated as fact | No scope limits or human handoff | 2, 13 |
+| Silent drift | Quality drops after a policy or model change, nobody notices | No regular answer testing | Series 8 |
 
 ### A note on regulation
 

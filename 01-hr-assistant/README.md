@@ -1,23 +1,26 @@
 # Series 1: #HRAssistantDesign
 
-This series takes one short brief, "Build us an assistant that answers HR questions for 20,000 staff", and designs the system behind it the way you would defend it in a design review. Each write-up picks one hidden part of the architecture (scope, country rules, permissions, freshness, testing, cost) and walks through the options, the trade-offs, and the choice. The running example never changes: an HR policy and benefits assistant for a 20,000-person global company, with PDF handbooks, country-specific laws, salary ranges, and private employee data.
+This series takes one short brief, "Build us an assistant that answers HR questions for 20,000 staff", and designs the system behind it the way you would defend it in a design review. Each write-up picks one hidden part of the architecture (requirements, parsing, chunking, search, reranking, context, permissions, freshness) and walks through the options, the trade-offs, and the choice. The running example never changes: an HR policy and benefits assistant for a 20,000-person global company, with PDF handbooks, country-specific laws, salary ranges, and private employee data.
 
 A write-up is marked *Published* only once it is live on LinkedIn.
 
 | # | Title | Topic | Status | LinkedIn |
 |---|---|---|---|---|
 | 1 | [Why Does An HR Bot Look Finished After Two Weeks?](01-curtain-raiser.md) | Framing The Brief | Draft | not yet |
-| 2 | What Is The HR Assistant Actually Allowed To Answer? | Scope And Question Types | Planned | not yet |
-| 3 | Should HR Knowledge Live In The Prompt, In A Search Index, Or In The Model? | Where Knowledge Lives | Planned | not yet |
-| 4 | How Do You Turn 3,000 Messy PDFs Into Something A Bot Can Search? | Document Ingestion | Planned | not yet |
-| 5 | How Does The Bot Give An Employee In Pune And One In Porto Different, Correct Answers? | Country And Role Context | Planned | not yet |
-| 6 | Who Is Allowed To See Which Salary Range? | Permission-Aware Search | Planned | not yet |
-| 7 | Keyword Search, Meaning Search, Or Both? | Hybrid Retrieval | Planned | not yet |
-| 8 | What Should The Bot Say When It Isn't Sure? | Grounding And Human Handoff | Planned | not yet |
-| 9 | How Do You Know The Answers Are Right Before 20,000 People Find Out? | Answer Quality Testing | Planned | not yet |
-| 10 | What Happens When The Leave Policy Changes On A Tuesday? | Freshness And Versioning | Planned | not yet |
-| 11 | What Does It Cost To Answer 20,000 People, And How Fast? | Cost, Speed, And Capacity | Planned | not yet |
-| 12 | The HR Assistant Design Review Checklist | Finale | Planned | not yet |
+| 2 | What Is The HR Assistant Actually Allowed To Answer? | Scope And The L1 To L5 Scale | Planned | not yet |
+| 3 | How Fast Is Fast Enough, And What Can One Answer Cost? | Latency, Cost, And Throughput Budgets | Planned | not yet |
+| 4 | Which Answers Must Never Come From The Model? | Deterministic Vs Model Boundaries | Planned | not yet |
+| 5 | How Do You Read 3,000 Messy PDFs, Scans, And Tables? | Document Parsing | Planned | not yet |
+| 6 | How Big Should One Piece Of The Handbook Be? | Chunking Strategies | Planned | not yet |
+| 7 | Keyword Search, Meaning Search, Or Both? | Dense, Sparse, And Hybrid Retrieval | Planned | not yet |
+| 8 | What If Staff Ask Badly Worded Questions? | Query Rewriting And HyDE | Planned | not yet |
+| 9 | How Do You Pick The Best 5 Passages Out Of 50? | Reranking | Planned | not yet |
+| 10 | Why Does The Bot Miss The Paragraph That Mattered? | Context Window Management | Planned | not yet |
+| 11 | How Does The Bot Give An Employee In Pune And One In Porto Different, Correct Answers? | Metadata Filtering | Planned | not yet |
+| 12 | Who Is Allowed To See Which Salary Range? | Document-Level Access Control | Planned | not yet |
+| 13 | What Should The Bot Say When It Isn't Sure? | Grounding And Human Handoff | Planned | not yet |
+| 14 | What Happens When The Leave Policy Changes On A Tuesday? | Freshness And Versioning | Planned | not yet |
+| 15 | The HR Assistant Design Review Checklist | Finale | Planned | not yet |
 
 Write-ups are numbered from 1 in titles and posts, for easy reference. There is no fixed schedule.
 
