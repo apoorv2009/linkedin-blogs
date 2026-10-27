@@ -62,15 +62,15 @@ Status is one of: **Planned** (outline ready), **Draft for review**, or **Publis
 | # | Write-up | Topic (the brief) | Level | Course lesson | Status | LinkedIn |
 |---|---|---|---|---|---|---|
 | 1 | [Why Does "Just Add RAG" Sound Like 2 Weeks But Take 6 Months?](01-curtain-raiser.md) | "Just add RAG over our HR docs. Two weeks?" | L1 to L5 | [1.1](01-curtain-raiser.course.md) | Draft for review | [Pending Publish] |
-| 2 | What Actually Happens To A PDF Before The Assistant Can Read It? | "We'll just upload the PDFs." | L3 | 1.2 | Planned | [Pending Publish] |
-| 3 | How Small Can You Cut A Policy Before It Stops Making Sense? | "Just split the documents into pages." | L3 | 1.3 | Planned | [Pending Publish] |
-| 4 | Why Does The Assistant Find "Parental Leave" But Miss "HR-PL-204"? | "It's AI search. It understands what we mean." | L3 | 1.4 | Planned | [Pending Publish] |
-| 5 | Why Is The First Search Result So Often Not The Best One? | "Just send the top 20 results to the model." | L3 | 1.5 | Planned | [Pending Publish] |
-| 6 | How Do You Stop A Salary Band Reaching The Wrong Screen? | "Everyone can use it, but nobody sees what they shouldn't." | L4 | 1.6 | Planned | [Pending Publish] |
-| 7 | Which Copy Of The Leave Policy Is The True One? | "The policy changed last week. Does the bot know?" | L4 | 1.7 | Planned | [Pending Publish] |
-| 8 | Why Does Giving The Model More Text Make The Answer Worse? | "Give it everything. The context window is huge." | L3 | 1.8 | Planned | [Pending Publish] |
-| 9 | How Does The Assistant Know Your Country Without Knowing Too Much? | "It should know where I work and what my grade is." | L4 | 1.9 | Planned | [Pending Publish] |
-| 10 | What Does Enterprise RAG Look Like On One Whiteboard? | "Show me the whole thing on one page before we fund it." | L5 | 1.10 | Planned | [Pending Publish] |
+| 2 | [What Actually Happens To A PDF Before The Assistant Can Read It?](02-pdf-ingestion.md) | "We'll just upload the PDFs." | L3 | [1.2](02-pdf-ingestion.course.md) | Draft for review | [Pending Publish] |
+| 3 | [How Small Can You Cut A Policy Before It Stops Making Sense?](03-chunking.md) | "Just split the documents into pages." | L3 | [1.3](03-chunking.course.md) | Draft for review | [Pending Publish] |
+| 4 | [Why Does The Assistant Find "Parental Leave" But Miss "HR-PL-204"?](04-hybrid-search.md) | "It's AI search. It understands what we mean." | L3 | [1.4](04-hybrid-search.course.md) | Draft for review | [Pending Publish] |
+| 5 | [Why Is The First Search Result So Often Not The Best One?](05-reranking.md) | "Just send the top 20 results to the model." | L3 | [1.5](05-reranking.course.md) | Draft for review | [Pending Publish] |
+| 6 | [How Do You Stop A Salary Band Reaching The Wrong Screen?](06-access-control.md) | "Everyone can use it, but nobody sees what they shouldn't." | L4 | [1.6](06-access-control.course.md) | Draft for review | [Pending Publish] |
+| 7 | [Which Copy Of The Leave Policy Is The True One?](07-versions-and-country-rules.md) | "The policy changed last week. Does the bot know?" | L4 | [1.7](07-versions-and-country-rules.course.md) | Draft for review | [Pending Publish] |
+| 8 | [Why Does Giving The Model More Text Make The Answer Worse?](08-context-bloat.md) | "Give it everything. The context window is huge." | L3 | [1.8](08-context-bloat.course.md) | Draft for review | [Pending Publish] |
+| 9 | [How Does The Assistant Know Your Country Without Knowing Too Much?](09-employee-context.md) | "It should know where I work and what my grade is." | L4 | [1.9](09-employee-context.course.md) | Draft for review | [Pending Publish] |
+| 10 | [What Does Enterprise RAG Look Like On One Whiteboard?](10-finale.md) | "Show me the whole thing on one page before we fund it." | L5 | [1.10](10-finale.course.md) | Draft for review | [Pending Publish] |
 
 ---
 
